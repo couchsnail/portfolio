@@ -1,5 +1,18 @@
 :root {
-  --color-accent: #B1A5CA; /* Accent color */
+  --color-accent: #B1A5CA;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; 
+  text-wrap: balance; 
+}
+
+h1 {
+  font-size: 4rem; 
+}
+
+h2 {
+  font-size: 2.5rem;
 }
 
 body {
@@ -43,4 +56,28 @@ nav > a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   background-color: oklch(from var(--color-accent) 95% 5% h);
   padding-bottom: 0.2em;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  gap: 1em;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+}
+
+article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+
+h2 {
+  margin: 0;
 }
