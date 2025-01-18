@@ -102,6 +102,12 @@ p > a {
   margin-bottom: 4em;
 }
 
+p:hover{
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  padding-bottom: 0.2em;
+}
+
 time {
   font-style: italic;
   color: #666;
@@ -111,4 +117,10 @@ ul {
   margin: 0;
   padding-left: 1.5em;
   margin-bottom: 1em;
+}
+
+ul:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  padding-bottom: 0.2em;
 }
