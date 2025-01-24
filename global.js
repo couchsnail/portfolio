@@ -14,16 +14,23 @@ function $$(selector, context = document) {
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 let pages = [
     { url: '', title: 'Home' },
-    { url: '/portfolio/projects/', title: 'Projects' },
-    { url: '/portfolio/contact/', title: 'Contact'},
+    { url: 'projects/', title: 'Projects' },
+    { url: 'contact/', title: 'Contact'},
     { url: 'https://github.com/couchsnail', title: 'Github'},
-    { url: '/portfolio/resume/', title: 'Resume' },
+    { url: 'resume/', title: 'Resume' },
 ]
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
+
+    if (!url.startsWith('http')) {
+        url = ARE_WE_HOME
+            ? `${location.origin}/${url}`
+            : `${location.origin}/${p.url}`;
+    }
+
     if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../' + url;
     }
