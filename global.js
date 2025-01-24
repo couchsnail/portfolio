@@ -27,14 +27,16 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
-    }
-    else {
+    if (!url.startsWith('http')) {
         url = ARE_WE_HOME
         ? `${BASE_PATH}${url}`
         : `${BASE_PATH}${p.url}`;
     }
+
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
+        url = '../' + url;
+    }
+    
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
