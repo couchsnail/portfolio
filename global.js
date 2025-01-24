@@ -25,7 +25,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
+        url = '/' + url;
     }
     let a = document.createElement('a');
     a.href = url;
@@ -62,4 +62,18 @@ select.addEventListener('input', function (event) {
     console.log('Color scheme changed to', event.target.value);
     document.documentElement.style.setProperty('color-scheme', event.target.value);
     localStorage.colorScheme = event.target.value;
+});
+
+// For the email form
+let form = document.querySelector('form');
+form?.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = new FormData(form);
+    let url = form.action + '?';
+    for (let [name, value] of data) {
+        url += '${encodeURIComponent(name)}=${encodeURIComponent(value)}&';
+        console.log(name, value);
+    }
+    url = url.slice(0, -1);
+    location.href = url;
 });
