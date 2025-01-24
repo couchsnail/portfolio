@@ -14,10 +14,10 @@ function $$(selector, context = document) {
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 let pages = [
     { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: 'Contact'},
+    { url: '/portfolio/projects/', title: 'Projects' },
+    { url: '/portfolio/contact/', title: 'Contact'},
     { url: 'https://github.com/couchsnail', title: 'Github'},
-    { url: 'resume/', title: 'Resume' },
+    { url: '/portfolio/resume/', title: 'Resume' },
 ]
 let nav = document.createElement('nav');
 document.body.prepend(nav);
