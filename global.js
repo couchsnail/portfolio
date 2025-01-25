@@ -55,9 +55,13 @@ document.body.insertAdjacentHTML(
   );
   
 const select = document.querySelector('#color-scheme-switcher');
-if ("color-scheme" in localStorage){
-    document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
-}
+if ("colorScheme" in localStorage) {
+    const savedScheme = localStorage.colorScheme;
+    document.documentElement.style.setProperty("color-scheme", savedScheme);
+      select.value = savedScheme;
+  } else {
+    select.value = "auto";
+  }
 
 select.addEventListener('input', function (event) {
     console.log('Color scheme changed to', event.target.value);
@@ -65,16 +69,16 @@ select.addEventListener('input', function (event) {
     localStorage.colorScheme = event.target.value;
 });
 
-// For the email form
-let form = document.querySelector('form');
-form?.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const data = new FormData(form);
-    let url = form.action + '?';
-    for (let [name, value] of data) {
-        url += '${encodeURIComponent(name)}=${encodeURIComponent(value)}&';
-        console.log(name, value);
-    }
-    url = url.slice(0, -1);
-    location.href = url;
-});
+// // For the email form
+// let form = document.querySelector('form');
+// form?.addEventListener('submit', function(event) {
+//     event.preventDefault();
+//     const data = new FormData(form);
+//     let url = form.action + '?';
+//     for (let [name, value] of data) {
+//         url += '${encodeURIComponent(name)}=${encodeURIComponent(value)}&';
+//         console.log(name, value);
+//     }
+//     url = url.slice(0, -1);
+//     location.href = url;
+// });
