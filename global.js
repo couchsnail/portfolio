@@ -12,7 +12,6 @@ function $$(selector, context = document) {
 //     currentLink?.classList.add('current');
 // }
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
-const BASE_PATH = '/portfolio/';
 
 let pages = [
     { url: '', title: 'Home' },
@@ -27,15 +26,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    if (!url.startsWith('http')) {
-        url = ARE_WE_HOME
-        ? `${BASE_PATH}${url}`
-        : `${BASE_PATH}${p.url}`;
-    }
-
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
-    }
+    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
     
     let a = document.createElement('a');
     a.href = url;
