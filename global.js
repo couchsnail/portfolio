@@ -69,16 +69,19 @@ select.addEventListener('input', function (event) {
     localStorage.colorScheme = event.target.value;
 });
 
-// // For the email form
-// let form = document.querySelector('form');
-// form?.addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     const data = new FormData(form);
-//     let url = form.action + '?';
-//     for (let [name, value] of data) {
-//         url += '${encodeURIComponent(name)}=${encodeURIComponent(value)}&';
-//         console.log(name, value);
-//     }
-//     url = url.slice(0, -1);
-//     location.href = url;
-// });
+// Code for lab 4
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data; 
+        
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+    
+}
