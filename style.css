@@ -134,3 +134,40 @@ ul:hover {
   right: 1rem;        
   font-size: 80%;     
 }
+
+/* For the color palatte */
+#profile-stats dl {
+  display: flex;
+  padding: 0.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: inherit;
+  background-color: var(--color-bg); 
+}
+
+#profile-stats dt {
+  font-weight: bold;
+  margin-right: 5px;
+  background-color: var(--color-bg); 
+  color: var(--color-text); 
+}
+
+#profile-stats dd {
+  margin-right: 15px;
+  color: var(--color-text); 
+}
+
+@media (prefers-color-scheme: dark) {
+  #profile-stats dl {
+    background-color: var(--color-bg-dark); 
+  }
+
+  #profile-stats dt {
+    background-color: var(--color-bg-dark); 
+    color: var(--color-text-dark); 
+  }
+
+  #profile-stats dd {
+    color: var(--color-text-dark); 
+  }
+}

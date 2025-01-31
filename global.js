@@ -132,3 +132,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
     console.log(`Total projects rendered: ${project.length}`);
 }
+
+export async function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}
