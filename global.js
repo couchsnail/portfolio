@@ -72,16 +72,63 @@ select.addEventListener('input', function (event) {
 // Code for lab 4
 export async function fetchJSON(url) {
     try {
+        console.log(`Fetching JSON from: ${url}`);
         // Fetch the JSON file from the given URL
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Failed to fetch projects: ${response.statusText}`);
         }
         const data = await response.json();
+        console.log("Fetched data:", data);
         return data; 
-        
+
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
     
+}
+
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+    if (!containerElement) {
+        console.error('Invalid container element:', containerElement);
+        return;
+    }
+    containerElement.innerHTML = '';
+
+    for(const proj of project){
+        const article = document.createElement('article');
+        // Handling if data is of the wrong type
+        if (typeof proj.title !== 'string') {
+            console.warn('Invalid project name:', project.name);
+            continue;
+        }
+        if (typeof proj.image !== 'string') {
+            console.warn('Invalid project image URL:', project.image);
+            continue;
+        }
+        if (typeof proj.description !== 'string') {
+            console.warn('Invalid project description:', project.description);
+            continue;
+        }
+        console.log(proj.title)
+
+        // Defaults in case data is missing
+        const imageUrl = proj.image || '../images/goomy.png';
+        const projectTitle = proj.title || 'Untitled project';
+        const projectDescription = proj.description || 'Lorem ipsum';
+
+        //create the article
+        article.innerHTML = `
+            <h3>${projectTitle}</h3>
+            <img src="${imageUrl}" alt="${projectTitle}">
+            <p>${projectDescription}</p>
+        `;
+        containerElement.appendChild(article);
+    }
+    const projectsTitleElement = document.querySelector('.projects-title');
+    if (projectsTitleElement) {
+        projectsTitleElement.textContent = `${project.length} Projects`;
+    }
+
+    console.log(`Total projects rendered: ${project.length}`);
 }
