@@ -1,62 +1,73 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, culpa nulla alias est ratione atque maxime aspernatur illum modi suscipit esse omnis praesentium consequuntur dignissimos similique mollitia blanditiis fugit impedit!"
+        "title": "IBHL Project: Japanese Culture Club App",
+        "year": "2022",
+        "image": "../images/Flag of Japan.png",
+        "description": "An app coded for the International Baccalureate HL Computer Science Program with Java and SQLite designed to help the Japanese Culture Club schedule events and track attendance."
     },
     {
-        "title": "Omnis quidem perferendis dolorum!",
+        "title": "DS3 FA23 Workshop 3: Introduction to Backend",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Officiis aliquid doloribus optio. Eos quae distinctio porro corporis suscipit laborum fuga. Facere velit odit vitae quae, eius non explicabo ad quod. Rem aliquid, sequi sint consequatur nemo in labore!"
+        "description": "A workshop hosted by the Data Science Student Society to teach undergraduate students the fundamentals of backend development."
     },
     {
-        "title": "Ipsum fuga distinctio doloribus.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quod voluptatibus corporis a alias dignissimos iste aperiam veniam voluptates. Eum, eaque, deleniti possimus adipisci quam temporibus obcaecati odio ut explicabo ipsam molestias corrupti! Architecto rerum porro omnis quidem ducimus."
+        "title": "Rucio-SENSE DMM",
+        "year": "2024", 
+        "image": "../images/dmm.png",
+        "description": "Data Movement Manager (DMM) for the Rucio-SENSE interoperation prototype. DMM is the interface between Rucio (/FTS) and SENSE, making SDN operated HEP data-flows possible. Based on the relative priorities of the datasets we construct peer-to-peer private vlans with respective dedicated bandwidths to ensure we have accountability in the use of resources."
     },
     {
-        "title": "Dolore minus placeat quae?",
+        "title": "DS3 SP24 Workshop 4: Introduction to Flask",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Facere tempore quos illo animi magni nam neque labore sunt vel odit! Magnam qui totam repellat cumque cupiditate itaque? Debitis, repellendus! Tenetur blanditiis reiciendis modi, consequuntur rerum aspernatur laboriosam nam?"
+        "description": "A workshop hosted by the Data Science Student Society illustrating the use of Flask to build personal websites."
     },
     {
-        "title": "Itaque quam aliquid autem?",
+        "title": "Recipes Rating Classifier",
+        "year": "2024", 
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Iste eligendi perferendis quasi, porro maxime ex ut, molestiae mollitia laudantium perspiciatis adipisci, excepturi beatae quam similique aspernatur atque rerum? Asperiores at obcaecati iste earum cumque natus nemo molestias et."
+        "description": "A classifier designed to rate recipes based on their features. Done in collaboration with Emma Leung."
     },
     {
-        "title": "Voluptatem possimus sit maiores?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Alias fuga maiores dolorum odio nihil modi deleniti, neque assumenda saepe doloribus similique quisquam, quo ipsam maxime corrupti ex velit officia fugit earum consequuntur. Odit et reiciendis aperiam placeat quasi?"
+        "title": "Bandwidth Allocation Testing",
+        "year": "2024",
+        "image": "../images/dmm.png",
+        "description": "Repository for the research and testing of the bandwidth allocation algorithm for the Rucio-SENSE DMM."
     },
     {
-        "title": "Accusamus dolore minima voluptatum.",
+        "title": "COGS 108 Final Project: Gamification in Education",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Sapiente totam voluptatem architecto dignissimos corrupti dicta, quaerat animi reiciendis itaque ratione illo cumque a maxime aspernatur! Itaque quidem obcaecati, sint ab vel consequuntur assumenda, quasi rerum autem excepturi nostrum."
+        "description": "An exploration of the effects of gamified learning on standardized test scores. Done in collaboration with Hew Yeh, Kendall Underwood, Megha Kumar, and Jasmin Taylor."
     },
     {
-        "title": "Architecto minus similique dolor.",
+        "title": "DSC80 Coursework",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Et suscipit fuga ipsum reiciendis! Eveniet possimus aliquam commodi architecto repudiandae nemo iure, autem obcaecati dolore qui cum, nihil, vero reprehenderit? Explicabo dolores deleniti tempora culpa eligendi cupiditate nostrum ad!"
+        "description": "Repository of classwork for UC San Diego's DSC 80 course."
     },
     {
-        "title": "Ipsa repellat dignissimos hic.",
+        "title": "DS3 FA24 Workshop 1: Build Your Own Project",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Tempora commodi, reprehenderit temporibus inventore deleniti iste voluptatibus nostrum maiores omnis aliquam magnam, dicta nemo ad! Quos molestiae debitis necessitatibus? Ipsam architecto eos quo odio aliquid totam esse, dignissimos culpa."
+        "description": "A workshop hosted by the Data Science Student Society designed to help students set up the coding environment for data science projects."
     },
     {
-        "title": "Et ad ab sit!",
+        "title": "CSE 158 Coursework",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Facilis iste, voluptatibus illo sint, at obcaecati qui accusamus libero incidunt hic impedit! Provident quis consequuntur animi voluptatem fuga debitis voluptatibus nobis unde vitae, accusamus pariatur quod quas corrupti quia!"
     },
     {
-        "title": "Officia aspernatur rem mollitia.",
+        "title": "DS3 WI25 Workshop 1: Introduction to Scikit-Learn",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Nesciunt ex eum officiis ducimus enim sint impedit. Ipsum voluptatum, quam cumque nihil consequuntur omnis aspernatur vero deserunt a cum rerum sed fugiat nesciunt ut debitis repellendus eaque sequi eius."
     },
     {
-        "title": "Fugit iste aperiam aliquid.",
+        "title": "DSC 140A Coursework",
+        "year": "2025", 
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Amet quisquam rem ullam quibusdam quidem provident obcaecati repellendus possimus asperiores non dicta corporis reprehenderit porro id praesentium totam nam, voluptas nesciunt alias iste similique. Voluptates provident odio sequi voluptatem?"
+        "description": "Classwork for UC San Diego's DSC 140A course."
     }
 ]

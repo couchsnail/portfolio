@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3600" height="2400" viewBox="0 0 3600 2400">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        filter: url(#filter-2);
+      }
+
+      .cls-3, .cls-4 {
+        font-size: 244.785px;
+        fill: #191919;
+        font-family: Montserrat;
+      }
+
+      .cls-3 {
+        font-weight: 700;
+      }
+    </style>
+    <filter id="filter" x="153" y="1195" width="1322" height="800" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#11b3c9"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="153" y="395" width="1322" height="800" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#f58134"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path class="cls-1" d="M945.68,1195L153,1995H681l794-800H945.68Z"/>
+  <path id="Shape_1_copy" data-name="Shape 1 copy" class="cls-2" d="M945.68,1195L153,395H681l794,800H945.68Z"/>
+  <text id="data" class="cls-3" transform="translate(1078.776 668.698) scale(2.043)">data</text>
+  <text id="science" class="cls-3" transform="translate(1489.676 1105.27) scale(2.043)">science</text>
+  <text id="student" class="cls-4" transform="translate(1484.676 1528.234) scale(2.043)">student</text>
+  <text id="society" class="cls-4" transform="translate(1082.383 1955.592) scale(2.043)">society</text>
+</svg>
