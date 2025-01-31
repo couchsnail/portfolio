@@ -42,10 +42,10 @@
         "description": "An exploration of the effects of gamified learning on standardized test scores. Done in collaboration with Hew Yeh, Kendall Underwood, Megha Kumar, and Jasmin Taylor."
     },
     {
-        "title": "DSC80 Coursework",
+        "title": "IBM Accelerate Green Garden Case Study",
         "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Repository of classwork for UC San Diego's DSC 80 course."
+        "description": "Findings from IBM Accelerate Consulting Track's Green Garden Case Study."
     },
     {
         "title": "DS3 FA24 Workshop 1: Build Your Own Project",
@@ -53,10 +53,10 @@
         "description": "A workshop hosted by the Data Science Student Society designed to help students set up the coding environment for data science projects."
     },
     {
-        "title": "CSE 158 Coursework",
+        "title": "HDSI x Deloitte: Optimizing Revenue with ML",
         "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Facilis iste, voluptatibus illo sint, at obcaecati qui accusamus libero incidunt hic impedit! Provident quis consequuntur animi voluptatem fuga debitis voluptatibus nobis unde vitae, accusamus pariatur quod quas corrupti quia!"
+        "description": "Under the Halicioglu Data Science Institute students and mentorship by Deloitte consultants, collaborated with fellow data science students to develop machine learning models to increase profits in real-world case study."
     },
     {
         "title": "DS3 WI25 Workshop 1: Introduction to Scikit-Learn",
@@ -65,9 +65,9 @@
         "description": "Nesciunt ex eum officiis ducimus enim sint impedit. Ipsum voluptatum, quam cumque nihil consequuntur omnis aspernatur vero deserunt a cum rerum sed fugiat nesciunt ut debitis repellendus eaque sequi eius."
     },
     {
-        "title": "DSC 140A Coursework",
+        "title": "Biological Evaluation in Data Science",
         "year": "2025", 
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Classwork for UC San Diego's DSC 140A course."
+        "description": "Exploration of healthcare in data science."
     }
 ]
