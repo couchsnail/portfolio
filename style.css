@@ -189,3 +189,59 @@ ul:hover {
     color: var(--color-text-dark); 
   }
 }
+
+/* For Lab 5 */
+svg {
+  width: 100%;  /* Let it shrink and grow */
+  max-width: 20em;  /* Prevent it from becoming too large */
+  height: auto;  /* Maintain aspect ratio */
+  overflow: visible;
+  flex-shrink: 0; /* Prevent it from shrinking too much */
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+.container {
+  display: flex; /* Places the pie chart and legend side by side */
+  align-items: center; /* Aligns them vertically */
+  justify-content: center; /* Centers the content horizontally */
+  gap: 20px; /* Adds spacing between the pie chart and legend */
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); 
+  gap: 8px; 
+  margin-top: 12px; 
+  padding: 1em;
+  margin: 2em;
+  border: 1px solid black; 
+  flex: 1;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px; 
+}
+
+.legend .swatch {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1 / 1; 
+  display: inline-block;
+  background: var(--color); 
+  border-radius: 50%; 
+  border: 1px solid #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center; 
+  gap: 4px; 
+  list-style: none; 
+}

@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1 class="projects-title">0 Projects</h1>
+    <div class="container">
+        <!-- <svg viewBox="-50 -50 100 100"></svg> -->
+        <svg id="projects-pie-plot" viewBox="-50 -50 100 100">
+            d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
+        </svg>
+        <ul class="legend"></ul>
+    </div>
     <div id="project-container" class="projects">
         <!-- Will be filled in by js -->
     </div>
