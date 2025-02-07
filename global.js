@@ -4,13 +4,6 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-//   );
-//   if (currentLink) {
-//     // or if (currentLink !== undefined)
-//     currentLink?.classList.add('current');
-// }
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 let pages = [
@@ -110,18 +103,24 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
             console.warn('Invalid project description:', project.description);
             continue;
         }
+        if (typeof proj.year !== 'string') {
+            console.warn('Invalid project year:', project.description);
+            continue;
+        }
         console.log(proj.title)
 
         // Defaults in case data is missing
         const imageUrl = proj.image || '../images/goomy.png';
         const projectTitle = proj.title || 'Untitled project';
         const projectDescription = proj.description || 'Lorem ipsum';
+        const projectYear = proj.year || '2024';
 
         //create the article
         article.innerHTML = `
             <h3>${projectTitle}</h3>
             <img src="${imageUrl}" alt="${projectTitle}">
             <p>${projectDescription}</p>
+            <p class="year">${projectYear}</p>
         `;
         containerElement.appendChild(article);
     }
