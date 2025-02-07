@@ -246,8 +246,43 @@ svg {
   list-style: none; 
 }
 
+.legend li.faded {
+  opacity: 0.5;
+}
+
+.legend li.selected {
+  font-weight: bold;
+}
+
+.faded {
+  opacity: 0.3;
+}
+
+.active {
+  opacity: 1;
+}
+
 .searchBar {
   width: 100%;
   height: 3em;
   font-size: 1.2em;
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
 }

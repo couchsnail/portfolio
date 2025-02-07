@@ -5,64 +5,9 @@ const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
 renderProjects(projects, projectsContainer, 'h2');
 
-/* For Lab 5 */
-// let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-// let rolledData = d3.rollups(
-//     projects,
-//     (v) => v.length,
-//     (d) => d.year,
-// );
-// let data = rolledData.map(([year, count]) => {
-//     return { value: count, label: year };
-//     });
+// /* For Lab 5 */
+let selectedIndex = -1;
 
-// let total = 0;
-// let pie = d3.pie().value((d) => d.value);
-// let arcData = pie(data);
-
-// for (let d of data) {
-//   total += d;
-// }
-// let angle = 0;
-
-// for (let d of data) {
-//   let endAngle = angle + (d / total) * 2 * Math.PI;
-//   arcData.push({ startAngle: angle, endAngle });
-//   angle = endAngle;
-// }
-
-// let sliceGenerator = d3.pie().value((d) => d.value);
-
-// let arcs = arcData.map((d) => arcGenerator(d));
-// let colors = d3.scaleOrdinal(d3.schemeTableau10);
-// arcs.forEach((arc, i) => {
-//     d3.select('svg')
-//     .append('path')
-//     .attr('d', arc)
-//     .attr('fill', colors(i));
-//   })
-
-// let legend = d3.select('.legend');
-// data.forEach((d, idx) => {
-//     legend.append('li')
-//           .attr('style', `--color:${colors(idx)}`)
-//           .attr('class', 'legend-item')
-//           .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-// });
-
-// /* Search query */
-// let query = '';
-// let searchInput = document.querySelector('.searchBar');
-
-// searchInput.addEventListener('change', (event) => {
-//   query = event.target.value;
-//   let filteredProjects = projects.filter((project) => {
-//     let values = Object.values(project).join('\n').toLowerCase();
-//     return values.includes(query.toLowerCase());
-//   });
-//   renderProjects(filteredProjects, projectsContainer, 'h2');
-
-// });
 function renderPieChart(projectsGiven) {
     d3.select('svg').selectAll('*').remove();
     d3.select('.legend').selectAll('*').remove();
@@ -87,17 +32,45 @@ function renderPieChart(projectsGiven) {
         svg.append('path')
             .datum(d)
             .attr('d', arcGenerator)
-            .attr('fill', colors(i));
+            .attr('fill', colors(i))
+            .attr('class', i === selectedIndex ? 'selected' : '')
+            .style('cursor', 'pointer')
+            .on('click', () => {
+                selectedIndex = selectedIndex === i ? -1 : i;
+                updateSelection(newData);
+            });
     });
 
     let legend = d3.select('.legend');
     newData.forEach((d, idx) => {
         legend.append('li')
             .attr('style', `--color:${colors(idx)}`)
-            .attr('class', 'legend-item')
-            .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+            .attr('class', `legend-item ${idx === selectedIndex ? 'selected' : ''}`)
+            .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+            .on('click', () => {
+                selectedIndex = selectedIndex === idx ? -1 : idx;
+                updateSelection(newData);
+            });
     });
 }
+
+// Added this function to update the selection because it wasn't working inside the renderPieChart function
+function updateSelection(newData) {
+    d3.selectAll('path')
+        .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+    
+    d3.selectAll('.legend-item')
+        .attr('class', (_, idx) => `legend-item ${idx === selectedIndex ? 'selected' : ''}`);
+    
+    if (selectedIndex === -1) {
+        renderProjects(projects, projectsContainer, 'h2');
+    } else {
+        let selectedYear = newData[selectedIndex].label;
+        let filteredProjects = projects.filter((project) => project.year === selectedYear);
+        renderProjects(filteredProjects, projectsContainer, 'h2');
+    }
+}
+
 const searchInput = document.querySelector('.searchBar');
 
 renderPieChart(projects);
@@ -111,6 +84,8 @@ searchInput.addEventListener('input', (event) => {
     renderProjects(filteredProjects, projectsContainer, 'h2');
     renderPieChart(filteredProjects);
 });
-  
-  
-  
+
+/* The search bar applies a filter inside the input event listener, but when
+the pie chart is filtered, it does so based on only year, which doesn't take
+into account the search query? To fix this I'd have to modify the search query 
+event listener so that it takes into account selected year?.*/
