@@ -1,0 +1,42 @@
+name: Update Code Statistics
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is different
+  workflow_dispatch:  # Allows manual runs
+
+jobs:
+  update-code-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full Git history
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v20  # Use latest Node.js version
+
+      - name: Ensure Meta Directory Exists
+        run: mkdir -p meta
+
+      - name: Run Elocuent
+        run: |
+          npx elocuent -d . -o meta/loc.csv
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -f meta/loc.csv
+          git commit -m "Update code statistics" || echo "No changes to commit"
+          git push origin main  # Change `main` if your branch is different
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
