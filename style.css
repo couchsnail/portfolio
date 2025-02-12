@@ -176,7 +176,7 @@ ul:hover {
 }
 
 /* For Lab 5 */
-svg {
+#projects-pie-plot svg {
   width: 100%;  
   max-width: 20em;  
   height: auto;  
@@ -315,7 +315,6 @@ path {
   font-weight: bold;
   color: inherit;
   margin: 0;
-  text-shadow: 1px 1px var(--color-accent);
 }
 
 #chart {
