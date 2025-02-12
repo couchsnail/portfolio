@@ -3,8 +3,8 @@ name: Update Code Statistics
 on:
   push:
     branches:
-      - main  # Change this if your default branch is different
-  workflow_dispatch:  # Allows manual runs
+      - main  
+  workflow_dispatch:  
 
 jobs:
   update-code-stats:
@@ -14,10 +14,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Get full Git history
+          fetch-depth: 0  
 
       - name: Setup Node.js
-        uses: actions/setup-node@v20  # Use latest Node.js version
+        uses: actions/setup-node@v20 
 
       - name: Ensure Meta Directory Exists
         run: mkdir -p meta

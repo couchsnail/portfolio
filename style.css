@@ -96,9 +96,9 @@ article .year {
   color: #666;
   text-align: right;
   margin-top: 2em;
-  position: absolute; /* Take the year out of the normal document flow */
-  bottom: 0; /* Position at the bottom of the article */
-  right: 0; /* Align to the right */
+  position: absolute; 
+  bottom: 0; 
+  right: 0; 
   gap: 0.5em;
 }
 
@@ -160,43 +160,28 @@ ul:hover {
   margin-bottom: 20px;
   text-align: center;
   color: inherit;
-  background-color: var(--color-bg); 
+  background-color: inherit; 
 }
 
 #profile-stats dt {
   font-weight: bold;
   margin-right: 5px;
-  background-color: var(--color-bg); 
-  color: var(--color-text); 
+  background-color: inherit; 
+  color: inherit; 
 }
 
 #profile-stats dd {
   margin-right: 15px;
-  color: var(--color-text); 
-}
-
-@media (prefers-color-scheme: dark) {
-  #profile-stats dl {
-    background-color: var(--color-bg-dark); 
-  }
-
-  #profile-stats dt {
-    background-color: var(--color-bg-dark); 
-    color: var(--color-text-dark); 
-  }
-
-  #profile-stats dd {
-    color: var(--color-text-dark); 
-  }
+  color: inherit; 
 }
 
 /* For Lab 5 */
 svg {
-  width: 100%;  /* Let it shrink and grow */
-  max-width: 20em;  /* Prevent it from becoming too large */
-  height: auto;  /* Maintain aspect ratio */
+  width: 100%;  
+  max-width: 20em;  
+  height: auto;  
   overflow: visible;
-  flex-shrink: 0; /* Prevent it from shrinking too much */
+  flex-shrink: 0; 
 }
 
 #projects-pie-plot {
@@ -206,10 +191,10 @@ svg {
 }
 
 .container {
-  display: flex; /* Places the pie chart and legend side by side */
-  align-items: center; /* Aligns them vertically */
-  justify-content: center; /* Centers the content horizontally */
-  gap: 20px; /* Adds spacing between the pie chart and legend */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 20px; 
 }
 
 .legend {
@@ -285,4 +270,56 @@ path {
   &:is(path) {
     fill: var(--color);
   }
+}
+
+/* Lab 6 Content */
+/* .stats {
+  display: flex;
+  margin: 0 auto;
+}
+
+.stats dt {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: inherit; 
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.stats dd {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: inherit;
+  padding: 0.5em;
+} */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  text-align: center; 
+  gap: 0.3em; 
+}
+
+.stats dt {
+  grid-column: span 2;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: inherit;
+}
+
+.stats dd {
+  grid-column: span 2; 
+  font-size: 2rem;
+  font-weight: bold;
+  color: inherit;
+  margin: 0;
+  text-shadow: 1px 1px var(--color-accent);
+}
+
+#chart {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
 }
