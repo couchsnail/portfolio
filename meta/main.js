@@ -12,7 +12,6 @@ async function loadData() {
   }));
   console.log(data);
 
-  processCommits();
   displayStats();
   createScatterPlot();
 }
@@ -242,7 +241,6 @@ function updateTooltipPosition(event) {
   tooltip.style.left = `${event.clientX}px`;
   tooltip.style.top = `${event.clientY}px`;
 }
-
 
 // Brushing
 function brushSelector() {
