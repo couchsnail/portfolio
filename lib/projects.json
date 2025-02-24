@@ -63,12 +63,12 @@
         "title": "DS3 WI25 Workshop 1: Introduction to Scikit-Learn",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Nesciunt ex eum officiis ducimus enim sint impedit. Ipsum voluptatum, quam cumque nihil consequuntur omnis aspernatur vero deserunt a cum rerum sed fugiat nesciunt ut debitis repellendus eaque sequi eius."
+        "description": "A workshop teaching the basics of Scikit-learn to undergraduate students."
     },
     {
-        "title": "Biological Evaluation in Data Science",
+        "title": "Bikewatching in Boston",
         "year": "2025", 
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Exploration of healthcare in data science."
+        "image": "../images/bikewatching.png",
+        "description": "An interactive visualization showing bike traffic in Boston."
     }
 ]
