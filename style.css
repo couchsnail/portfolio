@@ -397,3 +397,26 @@ dl.info[hidden]:not(:hover, :focus-within) {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+/* For Lab 08 */
+#commit-slider {
+    display: flex;
+    flex: 1;
+    gap: 1em;
+    align-items: baseline;
+    margin-left: auto;
+}
+
+.slider-container {
+  width: 100vw; /* Full width of the viewport */
+  position: absolute; /* Ensure it spans across */
+  left: 0;
+}
+
+input[type="range"] {
+  width: 100%; /* Make the slider itself take up the full width */
+}
+
+#commit-time {
+  align-content: right;
+}

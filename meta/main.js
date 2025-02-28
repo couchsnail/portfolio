@@ -1,5 +1,6 @@
 let data = [];
 let xScale, yScale;
+let selectedCommits = [];
 
 async function loadData() {
   data = await d3.csv('./loc.csv', (row) => ({
@@ -143,26 +144,22 @@ function createScatterPlot(){
     .attr('fill', 'purple')
     .attr('r', (d) => rScale(d.totalLines))
     .style('fill-opacity', 0.7) // Add transparency for overlapping dots
-    // .on('mouseenter', function (event, d) {
-    //     d3.select(event.currentTarget).style('fill-opacity', 1); 
-    //     updateTooltipContent(d, event); 
-    // })
-    // .on('mouseleave', function () {
-    //     d3.select(this).style('fill-opacity', 0.7); 
-    //     updateTooltipContent(d, event); 
-    // })
-    // .on('click', function (event, d) {
-    //     updateTooltipContent(d, event); 
-    // });
 
     dots
       .selectAll('circle')
       .on('mouseenter', (event, commit) => {
+        d3.select(event.currentTarget)
+          .style('fill-opacity', 1)
+          .attr('stroke', isCommitSelected(commit) ? 'gold' : 'black') // Highlight selection
+          .attr('stroke-width', 2);
         updateTooltipContent(commit);
         updateTooltipVisibility(true);
         updateTooltipPosition(event);
       })
-      .on('mouseleave', () => {
+      .on('mouseleave', (event, commit) => {
+        d3.select(event.currentTarget)
+        .style('fill-opacity', 0.7)
+        .attr('stroke', isCommitSelected(commit) ? 'gold' : 'none'); // Maintain selected outline
         updateTooltipContent({});
         updateTooltipVisibility(false);
       });
@@ -255,23 +252,28 @@ function brushSelector() {
 
 let brushSelection = null;
 
-function brushed(event) {
-  brushSelection = event.selection;
-  updateSelection();
-  updateSelectionCount();
-  updateLanguageBreakdown();
+function brushed(evt) {
+  brushSelection = evt.selection; 
+
+  if (!brushSelection) {
+    selectedCommits = [];
+  } else {
+    let [min, max] = brushSelection;
+    selectedCommits = commits.filter((commit) => {
+      let x = xScale(commit.datetime); 
+      let y = yScale(commit.hourFrac);
+
+      return x >= min[0] && x <= max[0] && y >= min[1] && y <= max[1];
+    });
+  }
+
+  updateSelection(); 
+  updateSelectionCount(); 
+  updateLanguageBreakdown(); 
 }
 
 function isCommitSelected(commit) {
-  if (!brushSelection) return false;
-
-  const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
-  const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-
-  const x = xScale(commit.date);
-  const y = yScale(commit.hourFrac);
-
-  return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+  return selectedCommits.some((selected) => selected.id === commit.id);
 }
 
 function updateSelection() {
@@ -280,7 +282,7 @@ function updateSelection() {
 }
 
 function updateSelectionCount() {
-  const selectedCommits = brushSelection
+  selectedCommits = brushSelection
     ? commits.filter(isCommitSelected)
     : [];
 
@@ -293,7 +295,7 @@ function updateSelectionCount() {
 }
 
 function updateLanguageBreakdown() {
-  const selectedCommits = brushSelection
+  selectedCommits = brushSelection
     ? commits.filter(isCommitSelected)
     : [];
   const container = document.getElementById('language-breakdown');
@@ -327,3 +329,129 @@ function updateLanguageBreakdown() {
 
   return breakdown;
 }
+
+// Lab 08 content
+// This is supposed to be for Step 1.1
+let commitProgress = 100;
+let timeScale = d3.scaleTime([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)], [0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+function filterCommitsByTime() {
+    filteredCommits = commits.filter(d => d.datetime < commitMaxTime);
+}
+
+// // Step 1.2
+// // This is supposed to updateScatterplot, but evidently it's not working
+// function updateScatterplot(filteredCommits) {
+//   const width = 1000;
+//   const height = 600;
+//   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
+//   d3.select('svg').remove(); // first clear the svg
+//   const svg = d3
+//     .select('#chart')
+//     .append('svg')
+//     .attr('viewBox', `0 0 ${width} ${height}`)
+//     .style('overflow', 'visible');
+
+//     filterCommitsByTime(); // Filter commits based on time
+//     updateScatterplot(filteredCommits); // Update scatter plot dynamically
+
+//     xScale = d3
+//       .scaleTime()
+//       .domain(d3.extent(filteredCommits, (d) => d.datetime))
+//       .range([0, width])
+//       .nice();
+
+//     yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+//     svg.selectAll('g').remove(); // clear the scatters in order to re-draw the filtered ones
+//     const dots = svg.append('g').attr('class', 'dots');
+
+//     const [minLines, maxLines] = d3.extent(filteredCommits, (d) => d.totalLines);
+//     const rScale = d3
+//       .scaleSqrt()
+//       .domain([minLines, maxLines])
+//       .range([2, 30]);
+
+//     dots.selectAll('circle').remove(); 
+    
+//     dots
+//       .selectAll('circle')
+//       .data(filteredCommits)
+//       .join('circle')
+//       .attr('cx', (d) => xScale(d.datetime))
+//       .attr('cy', (d) => yScale(d.hourFrac))
+//       .attr('fill', 'purple')
+//       .attr('r', (d) => rScale(d.totalLines))
+//       .style('fill-opacity', 0.7);
+
+//       dots
+//       .selectAll('circle')
+//       .on('mouseenter', (event, commit) => {
+//         d3.select(event.currentTarget)
+//           .style('fill-opacity', 1)
+//           .attr('stroke', isCommitSelected(commit) ? 'gold' : 'black') // Highlight selection
+//           .attr('stroke-width', 2);
+//         updateTooltipContent(commit);
+//         updateTooltipVisibility(true);
+//         updateTooltipPosition(event);
+//       })
+//       .on('mouseleave', (event, commit) => {
+//         d3.select(event.currentTarget)
+//         .style('fill-opacity', 0.7)
+//         .attr('stroke', isCommitSelected(commit) ? 'gold' : 'none'); // Maintain selected outline
+//         updateTooltipContent({});
+//         updateTooltipVisibility(false);
+//       });
+
+//     const margin = { top: 10, right: 10, bottom: 30, left: 20 };
+//     const usableArea = {
+//       top: margin.top,
+//       right: width - margin.right,
+//       bottom: height - margin.bottom,
+//       left: margin.left,
+//       width: width - margin.left - margin.right,
+//       height: height - margin.top - margin.bottom,
+//     };
+    
+//     // Update scales with new ranges
+//     xScale.range([usableArea.left, usableArea.right]);
+//     yScale.range([usableArea.bottom, usableArea.top]);
+
+//     // Create the axes
+//     const xAxis = d3.axisBottom(xScale);
+//     const yAxis = d3
+//     .axisLeft(yScale)
+//     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+
+//     // Add gridlines BEFORE the axes
+//     const gridlines = svg
+//     .append('g')
+//     .attr('class', 'gridlines')
+//     .attr('transform', `translate(${usableArea.left}, 0)`)
+//     .style('stroke-opacity', 0.3);
+
+//     // Create gridlines as an axis with no labels and full-width ticks
+//     gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+
+//     // Add X axis
+//     svg
+//       .append('g')
+//       .attr('transform', `translate(0, ${usableArea.bottom})`)
+//       .call(xAxis);
+
+//     // Add Y axis
+//     svg
+//       .append('g')
+//       .attr('transform', `translate(${usableArea.left}, 0)`)
+//       .call(yAxis);
+
+//     brushSelector();
+// }
+
+// function updateTimeDisplay() {
+//   commitProgress = Number(timeSlider.value);
+//   // what ever you have previously
+//   filterCommitsByTime(); // filters by time and assign to some top-level variable.
+//   updateScatterplot(filteredCommits);
+// }
